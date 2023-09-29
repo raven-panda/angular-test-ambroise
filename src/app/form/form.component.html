@@ -1,0 +1,29 @@
+<div class="form-container">
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+      <mat-form-field>
+        <input matInput placeholder="Label" name="label" ngModel required >
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput  placeholder="Montant" name="montant" ngModel required >
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Date d'achat" name="dateAchat" ngModel required >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Catégorie</mat-label>
+        <mat-select name="categorie" ngModel required >
+          <mat-option value="ResidencePrincipale">Résidence principale</mat-option>
+          <mat-option value="LocationNue">Location nue</mat-option>
+          <mat-option value="LocationMeublee">Location meublée</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="form.value.categorie === 'LocationMeublee'">
+        <mat-form-field>
+          <input matInput type="number" placeholder="Loyer" name="loyer" ngModel required >
+        </mat-form-field>
+      </div>
+      <button mat-raised-button type="submit" [disabled]="!form.valid">Valider</button>
+    </form>
+  </div>  
