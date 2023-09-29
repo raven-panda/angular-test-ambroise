@@ -1,5 +1,5 @@
 <div class="form-container">
-    <form (ngSubmit)="onSubmit()" #form="ngForm">
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
       <mat-form-field>
         <input matInput placeholder="Label" name="label" ngModel required >
       </mat-form-field>
