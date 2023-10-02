@@ -8,15 +8,15 @@ export class DataService {
 
   constructor(private datePipe: DatePipe) {}
 
-  incomingData: FormDataInterface = {};
   storedData: Array<FormDataInterface> = [];
 
-  setFormData(data: object) {
-    this.incomingData = data;
-    this.incomingData.dateAchat = this.datePipe.transform(this.incomingData.dateAchat, 'MM-dd-yyyy');
+  setFormData(data: FormDataInterface) {
+    let incomingData = data;
 
-    if(!this.storedData.find(item => item.label === this.incomingData.label)) {
-      this.storedData.push(this.incomingData);
+    incomingData.dateAchat = this.datePipe.transform(incomingData.dateAchat, 'MM-dd-yyyy');
+
+    if(!this.storedData.find(item => item.label === incomingData.label)) {
+      this.storedData.push(incomingData);
       return true;
     } else {
       return false;
@@ -24,12 +24,38 @@ export class DataService {
   }
 
   getFormData() {
+
     return this.storedData;
   }
 
   deleteData(label: string, montant: string, date: string) {
     let newData = this.storedData.filter(data => !(data.label === label && data.montant === montant && data.dateAchat === date));
+    console.log(newData);
     this.storedData = newData;
+  }
+
+  updateData(oldData: FormDataInterface, newData: FormDataInterface) {
+    if (oldData.label && oldData.montant && oldData.dateAchat) {
+
+      const matchName = this.storedData.find(item => {
+        if (item.label !== oldData.label) {
+          return item.label === newData.label;
+        } else {
+          return;
+        }
+      });
+
+      if(!matchName) {
+        this.deleteData(oldData.label, oldData.montant, oldData.dateAchat);
+
+        this.setFormData(newData);
+        return true;
+      } else {
+        return 'already-exists';
+      }
+    } else {
+      return false;
+    }
   }
 }
 

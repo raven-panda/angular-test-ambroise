@@ -16,13 +16,32 @@ export class ListComponent {
 
   ngOnInit() {
     this.formData = this.dataService.getFormData();
-    console.log(this.formData);
+  }
+
+  selectRow(row: HTMLElement) {
+    let label = row.querySelector('#label')?.textContent;
+    let montant = row.querySelector('#montant')?.textContent;
+    let categorie = row.querySelector('#categorie')?.textContent;
+    let dateAchat = row.querySelector('#dateAchat')?.textContent;
+    let loyer = row.querySelector('#loyer')?.textContent;
+
+    let returnedRow = {
+      label: label,
+      montant: montant,
+      categorie: categorie,
+      dateAchat: dateAchat,
+      loyer: loyer
+    }
+
+    return returnedRow;
   }
 
   deleteRow(row: HTMLElement) {
-    let label = row.querySelector('#label')?.textContent;
-    let montant = row.querySelector('#montant')?.textContent;
-    let dateAchat = row.querySelector('#dateAchat')?.textContent;
+    let selectedRow = this.selectRow(row);
+
+    let label = selectedRow.label;
+    let montant = selectedRow.montant;
+    let dateAchat = selectedRow.dateAchat;
 
     if (label && montant && dateAchat) {
       this.dataService.deleteData(label, montant, dateAchat);
@@ -32,17 +51,19 @@ export class ListComponent {
   }
 
   editRow(row: HTMLElement) {
-    this.openDialog();
+    let selectedRow = this.selectRow(row);
+
+    this.openDialog(selectedRow);
   }
 
-  openDialog() {
+  openDialog(row: object) {
     let dialogRef = this.dialog.open(DialogComponent, {
       width: '400px',
-      data: {}
+      data: row
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('La boite est fermée');
+    dialogRef.afterClosed().subscribe(() => {
+      this.formData = this.dataService.getFormData();
     })
   }
 }
