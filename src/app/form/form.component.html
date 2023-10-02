@@ -2,7 +2,7 @@
     <form (ngSubmit)="onSubmit(form)" #form="ngForm">
       <mat-form-field>
         <input matInput placeholder="Label" id="label" name="label" ngModel required >
-        <mat-error *ngIf="form.controls['label'].hasError('required') && (form.controls['label'].dirty || form.controls['label'].touched)">
+        <mat-error *ngIf="form.controls['categorie'] && form.controls['label'].hasError('required') && (form.controls['label'].dirty || form.controls['label'].touched)">
           Veuillez remplir ce champ.
         </mat-error>
       </mat-form-field>
@@ -10,7 +10,7 @@
 
       <mat-form-field>
         <input matInput  placeholder="Montant" name="montant" ngModel required >
-        <mat-error *ngIf="form.controls['montant'].hasError('required') && (form.controls['montant'].dirty || form.controls['montant'].touched)">
+        <mat-error *ngIf="form.controls['categorie'] && form.controls['montant'].hasError('required') && (form.controls['montant'].dirty || form.controls['montant'].touched)">
           Veuillez remplir ce champ.
         </mat-error>
       </mat-form-field>
@@ -18,7 +18,7 @@
         <input matInput [matDatepicker]="picker" placeholder="Date d'achat" name="dateAchat" ngModel required >
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="form.controls['dateAchat'].hasError('required') && (form.controls['dateAchat'].dirty || form.controls['dateAchat'].touched)">
+        <mat-error *ngIf="form.controls['categorie'] && form.controls['dateAchat'].hasError('required') && (form.controls['dateAchat'].dirty || form.controls['dateAchat'].touched)">
           Veuillez remplir ce champ.
         </mat-error>
       </mat-form-field>
@@ -29,13 +29,16 @@
           <mat-option value="LocationNue">Location nue</mat-option>
           <mat-option value="LocationMeublee">Location meublée</mat-option>
         </mat-select>
-        <mat-error *ngIf="form.controls['categorie'].hasError('required') && (form.controls['categorie'].dirty || form.controls['categorie'].touched)">
+        <mat-error *ngIf="form.controls['categorie'] && form.controls['categorie'].hasError('required') && (form.controls['categorie'].dirty || form.controls['categorie'].touched)">
           Veuillez remplir ce champ.
         </mat-error>
       </mat-form-field>
       <div *ngIf="form.value.categorie === 'LocationMeublee'">
         <mat-form-field>
           <input matInput type="number" placeholder="Loyer" name="loyer" ngModel required >
+          <mat-error *ngIf="form.controls['loyer'] && form.controls['loyer'].hasError('required') && (form.controls['loyer'].dirty || form.controls['loyer'].touched)">
+            Veuillez remplir ce champ.
+          </mat-error>
         </mat-form-field>
       </div>
       <button mat-raised-button type="submit" [disabled]="!form.valid">Valider</button>
