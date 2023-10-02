@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormComponent } from './form/form.component';
 import { ListComponent } from './list/list.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, FormComponent, ListComponent],
@@ -34,7 +35,9 @@ import { ListComponent } from './list/list.component';
     MatInputModule,
     MatSelectModule,
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
