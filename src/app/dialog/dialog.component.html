@@ -1,0 +1,48 @@
+<mat-dialog-content>
+    <h1>Modifier un bien</h1>
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <mat-form-field>
+            <input matInput placeholder="Label" id="label" name="label" ngModel required >
+            <mat-error *ngIf="form.controls['label'] && form.controls['label'].hasError('required') && (form.controls['label'].dirty || form.controls['label'].touched)">
+                Veuillez remplir ce champ.
+            </mat-error>
+            <mat-error *ngIf="form.controls['label'] && form.controls['label'].hasError('already-exists') && (form.controls['label'].dirty || form.controls['label'].touched)">
+                Cette propriété existe déjà.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput  placeholder="Montant" name="montant" ngModel required >
+            <mat-error *ngIf="form.controls['categorie'] && form.controls['montant'].hasError('required') && (form.controls['montant'].dirty || form.controls['montant'].touched)">
+                Veuillez remplir ce champ.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Date d'achat" name="dateAchat" ngModel required >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="form.controls['dateAchat'] && form.controls['dateAchat'].hasError('required') && (form.controls['dateAchat'].dirty || form.controls['dateAchat'].touched)">
+                Veuillez remplir ce champ.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Catégorie</mat-label>
+            <mat-select name="categorie" ngModel required >
+                <mat-option value="ResidencePrincipale">Résidence principale</mat-option>
+                <mat-option value="LocationNue">Location nue</mat-option>
+                <mat-option value="LocationMeublee">Location meublée</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls['categorie'] && form.controls['categorie'].hasError('required') && (form.controls['categorie'].dirty || form.controls['categorie'].touched)">
+                Veuillez remplir ce champ.
+            </mat-error>
+        </mat-form-field>
+        <div *ngIf="form.value.categorie === 'LocationMeublee'">
+            <mat-form-field>
+                <input matInput type="number" placeholder="Loyer" name="loyer" ngModel required >
+                <mat-error *ngIf="form.controls['loyer'] && form.controls['loyer'].hasError('required') && (form.controls['loyer'].dirty || form.controls['loyer'].touched)">
+                    Veuillez remplir ce champ.
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <button mat-raised-button type="submit" [disabled]="!form.valid">Valider</button>
+    </form>
+</mat-dialog-content>

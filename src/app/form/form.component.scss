@@ -1,11 +1,9 @@
 :host {
+    display: flex;
+    max-width: 30vw;
+
     .form-container{
         width: 100%;
-    }
-    
-    form{
-        display: flex;
-        flex-direction: column;
     }
 }
 

@@ -16,11 +16,15 @@ export class FormComponent {
 
   onSubmit(form: NgForm) {
 
-    this.dataService.setFormData(form.value);
+    let addProperty = this.dataService.setFormData(form.value);
     
     // Testing the stored data in the service
     this.formData = this.dataService.getFormData();
-    //console.log(this.formData);
+    console.log(this.formData);
+
+    if (!addProperty) {
+      form.controls['label'].setErrors({'already-exists': true});
+    }
   }
 
 }

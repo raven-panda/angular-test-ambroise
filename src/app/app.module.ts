@@ -17,9 +17,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormComponent } from './form/form.component';
 import { ListComponent } from './list/list.component';
 import { DatePipe } from '@angular/common';
+import { DialogComponent } from './dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, FormComponent, ListComponent],
+  declarations: [AppComponent, HomeComponent, FormComponent, ListComponent, DialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,6 +36,7 @@ import { DatePipe } from '@angular/common';
     MatNativeDateModule,
     MatInputModule,
     MatSelectModule,
+    MatDialogModule,
   ],
   providers: [
     DatePipe

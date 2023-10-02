@@ -14,11 +14,22 @@ export class DataService {
   setFormData(data: object) {
     this.incomingData = data;
     this.incomingData.dateAchat = this.datePipe.transform(this.incomingData.dateAchat, 'MM-dd-yyyy');
-    this.storedData.push(this.incomingData);
+
+    if(!this.storedData.find(item => item.label === this.incomingData.label)) {
+      this.storedData.push(this.incomingData);
+      return true;
+    } else {
+      return false;
+    }
   }
 
   getFormData() {
     return this.storedData;
+  }
+
+  deleteData(label: string, montant: string, date: string) {
+    let newData = this.storedData.filter(data => !(data.label === label && data.montant === montant && data.dateAchat === date));
+    this.storedData = newData;
   }
 }
 
