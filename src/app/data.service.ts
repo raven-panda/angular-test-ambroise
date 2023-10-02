@@ -19,5 +19,6 @@ export interface FormDataInterface {
   label?: string,
   categorie?: string,
   montant?: string,
-  dateAchat?: any
+  dateAchat?: any,
+  loyer?: string
 }

@@ -15,9 +15,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormComponent } from './form/form.component';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, FormComponent],
+  declarations: [AppComponent, HomeComponent, FormComponent, ListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

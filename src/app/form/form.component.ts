@@ -15,12 +15,12 @@ export class FormComponent {
   showForm = false;
 
   onSubmit(form: NgForm) {
-    
+
     this.dataService.setFormData(form.value);
     
     // Testing the stored data in the service
     this.formData = this.dataService.getFormData();
-
+    //console.log(this.formData);
   }
 
 }

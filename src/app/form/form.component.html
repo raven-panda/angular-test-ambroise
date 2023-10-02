@@ -18,7 +18,7 @@
         <input matInput [matDatepicker]="picker" placeholder="Date d'achat" name="dateAchat" ngModel required >
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="form.controls['categorie'] && form.controls['dateAchat'].hasError('required') && (form.controls['dateAchat'].dirty || form.controls['dateAchat'].touched)">
+        <mat-error *ngIf="form.controls['dateAchat'] && form.controls['dateAchat'].hasError('required') && (form.controls['dateAchat'].dirty || form.controls['dateAchat'].touched)">
           Veuillez remplir ce champ.
         </mat-error>
       </mat-form-field>
