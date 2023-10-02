@@ -21,6 +21,7 @@ export class DialogComponent {
     let updateResult = this.dataService.updateData(this.oldData, form.value);
 
     if (updateResult === true) {
+      form.resetForm();
       this.dialog.close(updateResult);
     } else if (updateResult === 'already-exists') {
       form.controls['label'].setErrors({'already-exists': true});

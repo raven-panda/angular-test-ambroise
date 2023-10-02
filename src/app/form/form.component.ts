@@ -19,6 +19,8 @@ export class FormComponent {
 
     if (!addProperty) {
       form.controls['label'].setErrors({'already-exists': true});
+    } else {
+      form.resetForm();
     }
   }
 
