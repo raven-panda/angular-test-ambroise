@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { DataService, FormDataInterface } from '../data.service';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-form',
@@ -11,7 +11,6 @@ export class FormComponent {
 
   constructor(private dataService: DataService) { }
 
-  formData: Array<FormDataInterface> = [];
   showForm = false;
 
   onSubmit(form: NgForm) {
@@ -23,6 +22,5 @@ export class FormComponent {
       form.resetForm();
     }
   }
-
 }
 

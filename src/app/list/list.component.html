@@ -20,8 +20,10 @@
                     <td id="montant">{{item.montant}}</td>
                     <td id="categorie">{{item.categorie}}</td>
                     <td id="dateAchat">{{item.dateAchat}}</td>
-                    <td *ngIf="item.loyer" id="loyer">{{item.loyer}}</td>
-                    <td *ngIf="!item.loyer" id="loyer">x</td>
+                    <td *ngIf="item.loyer; else no_rent" id="loyer">{{item.loyer}}</td>
+                    <ng-template #no_rent>
+                        <td id="loyer" >x</td>
+                    </ng-template>
                     <td id="actions">
                         <button id="edit-row" (click)="editRow(row)" class="btn p-0 mr-3">
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" viewBox="0 0 100 100">

@@ -30,7 +30,6 @@ export class DataService {
 
   deleteData(label: string, montant: string, date: string) {
     let newData = this.storedData.filter(data => !(data.label === label && data.montant === montant && data.dateAchat === date));
-    console.log(newData);
     this.storedData = newData;
   }
 
