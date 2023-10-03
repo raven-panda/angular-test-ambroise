@@ -2,14 +2,14 @@
     <h1>Modifier un bien</h1>
     <form (ngSubmit)="onSubmit(form)" #form="ngForm">
         <mat-form-field>
-            <input matInput placeholder="Label" id="label" name="label" ngModel [(ngModel)]="data.label" >
-            <mat-error *ngIf="form.controls['label'] && form.controls['label'].hasError('required') && (form.controls['label'].dirty || form.controls['label'].touched)">
+            <input matInput placeholder="Nom du bien" id="nom" name="nom" ngModel [(ngModel)]="data.nom" >
+            <mat-error *ngIf="form.controls['nom'] && form.controls['nom'].hasError('required') && (form.controls['nom'].dirty || form.controls['nom'].touched)">
                 Veuillez remplir ce champ.
             </mat-error>
-            <mat-error *ngIf="form.controls['label'] && form.controls['label'].hasError('already-exists') && (form.controls['label'].dirty || form.controls['label'].touched)">
+            <mat-error *ngIf="form.controls['nom'] && form.controls['nom'].hasError('already-exists') && (form.controls['nom'].dirty || form.controls['nom'].touched)">
                 Cette propriété existe déjà.
             </mat-error>
-            <mat-error *ngIf="form.controls['label'] && form.controls['label'].hasError('exception') && (form.controls['label'].dirty || form.controls['label'].touched)">
+            <mat-error *ngIf="form.controls['nom'] && form.controls['nom'].hasError('exception') && (form.controls['nom'].dirty || form.controls['nom'].touched)">
                 Une erreur inattendue est survenue. Veuillez réessayer.
             </mat-error>
         </mat-form-field>

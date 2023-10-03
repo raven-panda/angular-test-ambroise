@@ -16,10 +16,10 @@ export class FormComponent {
   onSubmit(form: NgForm) {
     let addProperty = this.dataService.setFormData(form.value);
 
-    if (!addProperty) {
-      form.controls['label'].setErrors({'already-exists': true});
-    } else {
+    if (addProperty) {
       form.resetForm();
+    } else {
+      form.controls['nom'].setErrors({'already-exists': true});
     }
   }
 }

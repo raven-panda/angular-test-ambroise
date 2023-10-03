@@ -22,7 +22,7 @@ export class DialogComponent {
 
     if (updateResult === true) {
       form.resetForm();
-      this.dialog.close(updateResult);
+      this.dialog.close();
     } else if (updateResult === 'already-exists') {
       form.controls['label'].setErrors({'already-exists': true});
     } else {

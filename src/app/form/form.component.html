@@ -1,11 +1,11 @@
 <div class="form-container">
     <form (ngSubmit)="onSubmit(form)" #form="ngForm">
       <mat-form-field>
-        <input matInput placeholder="Label" id="label" name="label" ngModel required >
-        <mat-error *ngIf="form.controls['label'] && form.controls['label'].hasError('required') && (form.controls['label'].dirty || form.controls['label'].touched)">
+        <input matInput placeholder="Nom du bien" id="nom" name="nom" ngModel required >
+        <mat-error *ngIf="form.controls['nom'] && form.controls['nom'].hasError('required') && (form.controls['nom'].dirty || form.controls['nom'].touched)">
           Veuillez remplir ce champ.
         </mat-error>
-        <mat-error *ngIf="form.controls['label'] && form.controls['label'].hasError('already-exists') && (form.controls['label'].dirty || form.controls['label'].touched)">
+        <mat-error *ngIf="form.controls['nom'] && form.controls['nom'].hasError('already-exists') && (form.controls['nom'].dirty || form.controls['nom'].touched)">
           Cette propriété existe déjà.
         </mat-error>
       </mat-form-field>

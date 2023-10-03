@@ -18,14 +18,14 @@ export class ListComponent {
   }
 
   selectRow(row: HTMLElement) {
-    let label = row.querySelector('#label')?.textContent;
+    let nom = row.querySelector('#nom')?.textContent;
     let montant = row.querySelector('#montant')?.textContent;
     let categorie = row.querySelector('#categorie')?.textContent;
     let dateAchat = row.querySelector('#dateAchat')?.textContent;
     let loyer = row.querySelector('#loyer')?.textContent;
 
     let returnedRow = {
-      label: label,
+      nom: nom,
       montant: montant,
       categorie: categorie,
       dateAchat: dateAchat,
@@ -35,24 +35,24 @@ export class ListComponent {
     return returnedRow;
   }
 
-  deleteRow(row: HTMLElement) {
-    let selectedRow = this.selectRow(row);
-
-    let label = selectedRow.label;
-    let montant = selectedRow.montant;
-    let dateAchat = selectedRow.dateAchat;
-
-    if (label && montant && dateAchat) {
-      this.dataService.deleteData(label, montant, dateAchat);
-    }
-
-    this.formData = this.dataService.getFormData();
-  }
-
   editRow(row: HTMLElement) {
     let selectedRow = this.selectRow(row);
 
     this.openDialog(selectedRow);
+  }
+
+  deleteRow(row: HTMLElement) {
+    let selectedRow = this.selectRow(row);
+
+    let nom = selectedRow.nom;
+    let montant = selectedRow.montant;
+    let dateAchat = selectedRow.dateAchat;
+
+    if (nom && montant && dateAchat) {
+      this.dataService.deleteData(nom, montant, dateAchat);
+    }
+
+    this.formData = this.dataService.getFormData();
   }
 
   openDialog(row: object) {

@@ -2,12 +2,12 @@
     <table class="table">
         <thead class="table-dark">
             <tr>
-                <th scope="col">Label</th>
+                <th scope="col">Nom du bien</th>
                 <th scope="col">Montant</th>
                 <th scope="col">Catégorie</th>
                 <th scope="col">Date d'achat</th>
                 <th scope="col">Loyer (si location meublée)</th>
-                <th scope="col">Actions</th>
+                <th scope="col" style="min-width: 100px">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -16,7 +16,7 @@
             </tr>
             <ng-template ngFor let-item [ngForOf]="formData">
                 <tr class="align-middle" #row>
-                    <td id="label">{{item.label}}</td>
+                    <td id="nom">{{item.nom}}</td>
                     <td id="montant">{{item.montant}}</td>
                     <td id="categorie">{{item.categorie}}</td>
                     <td id="dateAchat">{{item.dateAchat}}</td>

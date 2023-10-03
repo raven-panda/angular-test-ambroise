@@ -15,7 +15,7 @@ export class DataService {
 
     incomingData.dateAchat = this.datePipe.transform(incomingData.dateAchat, 'MM-dd-yyyy');
 
-    if(!this.storedData.find(item => item.label === incomingData.label)) {
+    if(!this.storedData.find(item => item.nom === incomingData.nom)) {
       this.storedData.push(incomingData);
       return true;
     } else {
@@ -28,24 +28,24 @@ export class DataService {
     return this.storedData;
   }
 
-  deleteData(label: string, montant: string, date: string) {
-    let newData = this.storedData.filter(data => !(data.label === label && data.montant === montant && data.dateAchat === date));
+  deleteData(nom: string, montant: string, date: string) {
+    let newData = this.storedData.filter(data => !(data.nom === nom && data.montant === montant && data.dateAchat === date));
     this.storedData = newData;
   }
 
   updateData(oldData: FormDataInterface, newData: FormDataInterface) {
-    if (oldData.label && oldData.montant && oldData.dateAchat) {
+    if (oldData.nom && oldData.montant && oldData.dateAchat) {
 
       const matchName = this.storedData.find(item => {
-        if (item.label !== oldData.label) {
-          return item.label === newData.label;
+        if (item.nom !== oldData.nom) {
+          return item.nom === newData.nom;
         } else {
           return;
         }
       });
 
       if(!matchName) {
-        this.deleteData(oldData.label, oldData.montant, oldData.dateAchat);
+        this.deleteData(oldData.nom, oldData.montant, oldData.dateAchat);
 
         this.setFormData(newData);
         return true;
@@ -59,7 +59,7 @@ export class DataService {
 }
 
 export interface FormDataInterface {
-  label: string,
+  nom: string,
   categorie: string,
   montant: string,
   dateAchat: any,
