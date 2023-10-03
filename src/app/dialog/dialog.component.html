@@ -14,9 +14,12 @@
             </mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input matInput  placeholder="Montant" name="montant" ngModel [(ngModel)]="data.montant" required >
-            <mat-error *ngIf="form.controls['categorie'] && form.controls['montant'].hasError('required') && (form.controls['montant'].dirty || form.controls['montant'].touched)">
+            <input matInput placeholder="Montant" name="montant" ngModel pattern="[0-9]+" [(ngModel)]="data.montant" required >
+            <mat-error *ngIf="form.controls['montant'] && form.controls['montant'].hasError('required') && (form.controls['montant'].dirty || form.controls['montant'].touched)">
                 Veuillez remplir ce champ.
+            </mat-error>
+            <mat-error *ngIf="form.controls['montant'] && form.controls['montant'].hasError('pattern') && (form.controls['montant'].dirty || form.controls['montant'].touched)">
+                Veuillez entrer un nombre.
             </mat-error>
         </mat-form-field>
         <mat-form-field>

@@ -5,8 +5,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  templateUrl: './list.component.html'
 })
 export class ListComponent {
   constructor(private dataService: DataService,

@@ -59,9 +59,9 @@ export class DataService {
 }
 
 export interface FormDataInterface {
-  label?: string,
-  categorie?: string,
-  montant?: string,
-  dateAchat?: any,
+  label: string,
+  categorie: string,
+  montant: string,
+  dateAchat: any,
   loyer?: string
 }
