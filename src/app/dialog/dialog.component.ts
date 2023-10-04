@@ -28,9 +28,9 @@ export class DialogComponent {
       form.resetForm();
       this.dialog.close();
     } else if (updateResult === 'already-exists') {
-      form.controls['label'].setErrors({'already-exists': true});
+      form.controls['nom'].setErrors({'already-exists': true});
     } else {
-      form.controls['label'].setErrors({'exception': true});
+      form.controls['nom'].setErrors({'exception': true});
     }
   }
 }
