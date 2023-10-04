@@ -17,7 +17,11 @@ export class DialogComponent {
   dateAchatFormatted: Date = new Date(this.data.dateAchat);
   oldData: FormDataInterface = Object.assign({}, this.data);
 
-  onSubmit(form: NgForm) {
+  /**
+   * Called on the form submit.
+   * @param {NgForm} form The formGroup instance with fields value
+   */
+  onSubmit(form: NgForm): void {
     let updateResult = this.dataService.updateData(this.oldData, form.value);
 
     if (updateResult === true) {

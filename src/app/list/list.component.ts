@@ -13,10 +13,15 @@ export class ListComponent {
 
   formData: Array<FormDataInterface> = [];
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.formData = this.dataService.getFormData();
   }
 
+  /**
+   * Take the HTML element of a row and put its cells text content into an object.
+   * @param {HTMLElement} row HTML Element of the selected row.
+   * @returns An object of row's value
+   */
   selectRow(row: HTMLElement) {
     let nom = row.querySelector('#nom')?.textContent;
     let montant = row.querySelector('#montant')?.textContent;
@@ -35,13 +40,21 @@ export class ListComponent {
     return returnedRow;
   }
 
-  editRow(row: HTMLElement) {
+  /**
+   * Calls the openDialog method with the object of the selected row as parameter.
+   * @param {HTMLElement} row HTML Element of the selected row.
+   */
+  editRow(row: HTMLElement): void {
     let selectedRow = this.selectRow(row);
 
     this.openDialog(selectedRow);
   }
 
-  deleteRow(row: HTMLElement) {
+  /**
+   * Calls the data service to delete the formdata of the selected estate property.
+   * @param {HTMLElement} row HTML Element of the selected row.
+   */
+  deleteRow(row: HTMLElement): void {
     let selectedRow = this.selectRow(row);
 
     let nom = selectedRow.nom;
@@ -52,10 +65,16 @@ export class ListComponent {
       this.dataService.deleteData(nom, montant, dateAchat);
     }
 
+    // Refresh formdata
     this.formData = this.dataService.getFormData();
   }
 
-  openDialog(row: object) {
+  /**
+   * - Opens the dialog box, and send the row object as data to display in the form.
+   * - Refreshes the formData property after the dialog was closed.
+   * @param {object} row The selected row to be edited.
+   */
+  openDialog(row: object): void {
     let dialogRef = this.dialog.open(DialogComponent, {
       width: '400px',
       data: row

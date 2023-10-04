@@ -13,7 +13,11 @@ export class FormComponent {
 
   showForm = false;
 
-  onSubmit(form: NgForm) {
+  /**
+   * Called on the form submit.
+   * @param {NgForm} form The formGroup instance with fields value
+   */
+  onSubmit(form: NgForm): void {
     let addProperty = this.dataService.setFormData(form.value);
 
     if (addProperty) {
