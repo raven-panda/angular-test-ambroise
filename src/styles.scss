@@ -4,4 +4,12 @@
 
 html, body { min-height: 100vh; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #CDD5D1;}
-form { display: flex; flex-direction: column;}
+form {
+    display: flex;
+    flex-direction: column;
+    
+    mat-label.required-hint {
+        font-style: italic;
+        font-size: 0.8rem;
+    }
+}

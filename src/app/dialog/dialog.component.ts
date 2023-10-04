@@ -12,7 +12,7 @@ import { DataService, FormDataInterface } from '../data.service';
 export class DialogComponent {
   constructor(private dataService: DataService,
     public dialog: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {}
+    @Inject(MAT_DIALOG_DATA) public data: FormDataInterface) {}
 
   dateAchatFormatted: Date = new Date(this.data.dateAchat);
   oldData: FormDataInterface = Object.assign({}, this.data);

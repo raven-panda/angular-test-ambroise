@@ -2,7 +2,7 @@
     <h1>Modifier un bien</h1>
     <form (ngSubmit)="onSubmit(form)" #form="ngForm">
         <mat-form-field>
-            <input matInput placeholder="Nom du bien" id="nom" name="nom" ngModel [(ngModel)]="data.nom" >
+            <input matInput placeholder="Nom du bien*" id="nom" name="nom" ngModel [(ngModel)]="data.nom" >
             <mat-error *ngIf="form.controls['nom'] && form.controls['nom'].hasError('required') && (form.controls['nom'].dirty || form.controls['nom'].touched)">
                 Veuillez remplir ce champ.
             </mat-error>
@@ -14,7 +14,7 @@
             </mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Montant" name="montant" ngModel pattern="[0-9]+" [(ngModel)]="data.montant" required >
+            <input matInput placeholder="Montant*" name="montant" ngModel pattern="[0-9]+" [(ngModel)]="data.montant" required >
             <mat-error *ngIf="form.controls['montant'] && form.controls['montant'].hasError('required') && (form.controls['montant'].dirty || form.controls['montant'].touched)">
                 Veuillez remplir ce champ.
             </mat-error>
@@ -23,7 +23,7 @@
             </mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="Date d'achat" name="dateAchat" ngModel [(ngModel)]="dateAchatFormatted" required >
+            <input matInput [matDatepicker]="picker" placeholder="Date d'achat*" name="dateAchat" ngModel [(ngModel)]="dateAchatFormatted" required >
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             <mat-error *ngIf="form.controls['dateAchat'] && form.controls['dateAchat'].hasError('required') && (form.controls['dateAchat'].dirty || form.controls['dateAchat'].touched)">
@@ -49,6 +49,7 @@
                 </mat-error>
             </mat-form-field>
         </div>
+        <mat-label class="required-hint">*Tous les champs sont obligatoires.</mat-label>
         <button mat-raised-button type="submit" [disabled]="!form.valid">Valider</button>
     </form>
 </mat-dialog-content>
